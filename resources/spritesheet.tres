@@ -1,3 +1,6 @@
-[gd_resource type="AtlasTexture" format=3 uid="uid://boswwbtg308n8"]
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://boswwbtg308n8"]
+
+[ext_resource type="Texture2D" uid="uid://xoiu11ke3ei5" path="res://images/spritesheet.webp" id="1_wm6s8"]
 
 [resource]
+atlas = ExtResource("1_wm6s8")

@@ -11,5 +11,11 @@ config_version=5
 [application]
 
 config/name="Durhack2025"
+run/main_scene="res://images/main.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://images/icon.svg"
+
+[display]
+
+window/size/viewport_width=480
+window/size/viewport_height=730
