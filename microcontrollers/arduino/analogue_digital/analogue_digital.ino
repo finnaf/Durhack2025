@@ -1,22 +1,37 @@
-int analogue_sensor_pentiometer_pin = A0;
-int analogue_sensor_pentiometer_value = 0;
-int digital_sensor_button_pin = 4;
-int digital_sensor_button_value = 0;
+#define NUM_ANALOGUE_PINS 1
+#define NUM_DIGITAL_PINS 1
+
+uint8_t analogue_pins[] = {A0, A1, A2, A3, A4};
+uint8_t digital_pins[] = {4, 5, 6, 7};
+
+int analogue_values[NUM_ANALOGUE_PINS];
+int digital_values[NUM_DIGITAL_PINS];
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
-  pinMode(digital_sensor_button_pin, INPUT_PULLUP);
+  for (int i = 0; i < NUM_DIGITAL_PINS; i++) {
+    pinMode(digital_pins[i], INPUT_PULLUP);
+  }
+
+  // pinMode(digital_sensor_button_pin, INPUT_PULLUP);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  analogue_sensor_pentiometer_value = analogRead(analogue_sensor_pentiometer_pin);
-  Serial.print("Joycon: ");
-  Serial.println(analogue_sensor_pentiometer_value);
+  Serial.print("Analogue: {");
+  for (int i = 0; i < NUM_ANALOGUE_PINS; i++) {
+    analogue_values[i] = analogRead(analogue_pins[i]);
+    Serial.print(analogue_values[i]);
+    Serial.print(", ");
+  }
+  Serial.println("}");
 
-  digital_sensor_button_value = digitalRead(digital_sensor_button_pin);
-  Serial.print("Button: ");
-  Serial.println(digital_sensor_button_value);
+  Serial.print("Digital: {");
+  for (int i = 0; i < NUM_DIGITAL_PINS; i++) {
+    digital_values[i] = digitalRead(digital_pins[i]);
+    Serial.print(digital_values[i]);
+    Serial.print(", ");
+  }
+  Serial.println("}");
 }
