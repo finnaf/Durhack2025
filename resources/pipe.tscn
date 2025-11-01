@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://2r8vt2vkhgkb"]
+
+[ext_resource type="SpriteFrames" uid="uid://s6womk1juexn" path="res://resources/pipes.tres" id="1_eswl4"]
+[ext_resource type="Script" uid="uid://boy72wce5c57k" path="res://scripts/pipe.gd" id="2_faxyh"]
+
+[node name="Pipe" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = ExtResource("1_eswl4")
+script = ExtResource("2_faxyh")
