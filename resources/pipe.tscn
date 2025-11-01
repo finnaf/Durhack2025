@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://2r8vt2vkhgkb"]
+[gd_scene load_steps=4 format=3 uid="uid://2r8vt2vkhgkb"]
 
 [ext_resource type="SpriteFrames" uid="uid://s6womk1juexn" path="res://resources/pipes.tres" id="1_eswl4"]
-[ext_resource type="Script" uid="uid://boy72wce5c57k" path="res://scripts/pipe.gd" id="2_faxyh"]
+[ext_resource type="Script" uid="uid://dyyqc4o55d4md" path="res://resources/pipe-graphic.gd" id="1_faxyh"]
 
-[node name="Pipe" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eswl4"]
+size = Vector2(2, 32)
+
+[node name="PipeGraphic" type="Area2D"]
 texture_filter = 1
+script = ExtResource("1_faxyh")
+
+[node name="Image" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_eswl4")
-script = ExtResource("2_faxyh")
+
+[node name="RightBoundary" type="CollisionShape2D" parent="."]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_eswl4")
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="."]
+position = Vector2(-13, 0)
+shape = SubResource("RectangleShape2D_eswl4")
