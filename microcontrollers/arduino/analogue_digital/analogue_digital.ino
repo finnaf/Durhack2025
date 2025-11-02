@@ -1,5 +1,5 @@
 #define NUM_ANALOGUE_PINS 4
-#define NUM_DIGITAL_PINS 3
+#define NUM_DIGITAL_PINS 4
 #define JOYSTICK_Z_PIN 7
 
 // List of Pins
