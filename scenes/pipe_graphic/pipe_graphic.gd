@@ -14,7 +14,18 @@ extends Node2D
 	"RightT",
 	"LeftT",
 	"Crisscross",
-	"Button") var animation_frame: int = 0
+	"JoystickIn",
+	"JoystickLR",
+	"JoystickUD",
+	"RageSense",
+	"LightSense",
+	"Button",
+	"WaterSense",
+	"Sonar",
+	"Potentiometer",
+	"HallEffect",
+	"TouchSense",
+	"BreathSense") var animation_frame: int = 0
 
 func _ready():
 	image.frame = animation_frame
