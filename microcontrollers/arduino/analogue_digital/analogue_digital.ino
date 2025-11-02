@@ -1,5 +1,6 @@
 #define NUM_ANALOGUE_PINS 4
 #define NUM_DIGITAL_PINS 3
+#define JOYSTICK_Z_PIN 7
 
 // List of Pins
 uint8_t analogue_pins[] = {A8, A9, A10, A11, A12, A13};
@@ -40,6 +41,10 @@ void loop() {
   // Read and Update Values for all Digital Pins
   for (int i = 0; i < NUM_DIGITAL_PINS; i++) {
     digital_values[i] = digitalRead(digital_pins[i]);
+
+    if (digital_pins[i] == JOYSTICK_Z_PIN) {
+      digital_values[i] = !digital_values[i];
+    }
     Serial.print(digital_values[i]);
     
     // Conditionally print the comma to clean up the output
