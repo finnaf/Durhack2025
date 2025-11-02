@@ -6,7 +6,7 @@ var pipes: Array[Node2D] = []
 func add_pipe(pipe: Node2D) -> void:
 	pipes.append(pipe)
 
-func tick() -> void:	
+func tick() -> void:
 	# Run one simultaneous simulation step.
 	
 	# Phase 1: Calculate all planned transfers
@@ -15,7 +15,7 @@ func tick() -> void:
 		transfers[pipe] = []
 
 	for pipe in pipes:
-		if not pipe.open or pipe.water <= 0 or pipe.is_leaf():
+		if not pipe.isOpen() or pipe.water <= 0 or pipe.is_leaf():
 			continue
 
 		# Find all connected pipes that can receive water
