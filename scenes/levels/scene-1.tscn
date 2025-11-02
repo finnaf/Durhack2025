@@ -9,12 +9,12 @@
 script = ExtResource("1_b7fmw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 506.0
 offset_bottom = 369.0
 color = Color(0.90574, 0.503502, 0.661059, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_dtctc")
 offset = Vector2(500, 365)
 
