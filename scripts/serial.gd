@@ -63,12 +63,12 @@ var _sensor_to_pin = {
 	Globals.SensorType.WET_SENSOR: [analogue_values, 1],
 	Globals.SensorType.JOYSTICK_X: [analogue_values, 2],
 	Globals.SensorType.JOYSTICK_Y: [analogue_values, 3],
-	Globals.SensorType.JOYSTICK_Z: [digital_values, 4],
-	Globals.SensorType.HALL_EFFECT_SENSOR: [digital_values, 5],
-	Globals.SensorType.TOUCH_SENSOR: [digital_values, 6],
-	Globals.SensorType.BUTTON: [digital_values, 7],
-	Globals.SensorType.STEAM_SENSOR: [analogue_values, 8],
-	Globals.SensorType.RAGE_SENSOR: [analogue_values, 9]
+	Globals.SensorType.JOYSTICK_Z: [digital_values, 3],
+	Globals.SensorType.HALL_EFFECT_SENSOR: [digital_values, 1],
+	Globals.SensorType.TOUCH_SENSOR: [digital_values, 0],
+	Globals.SensorType.BUTTON: [digital_values, 2],
+	Globals.SensorType.STEAM_SENSOR: [analogue_values, 4],
+	Globals.SensorType.RAGE_SENSOR: [analogue_values, 5]
 }
 
 func isTriggered(sensor: Globals.SensorType):
