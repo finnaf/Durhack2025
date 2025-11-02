@@ -5,6 +5,14 @@ extends Node2D
 @export var is_vertical := true
 @export var is_final := false
 
+@onready var serial_controller = get_tree().root.find_child("SerialController", true, false)	
+func isOpen():
+	print(str(sensors))
+	for sensor in sensors:
+		if (!serial_controller.isTriggered(sensor)):
+			return false
+	
+	return true
 
 
 @export var sensors: Array[Globals.SensorType] = []
@@ -17,15 +25,6 @@ var connected_pipes: Array[Node2D] = []
 
 var color = Color(0, 0.2, 0.9)
 var water_container_size = Vector2(26, 10)
-
-@onready var serial_controller: Node3D = get_node("SerialController")
-	
-func isOpen():
-	for sensor in sensors:
-		if (!serial_controller.isTriggered(sensor)):
-			return false
-	
-	return true
 
 func add_water(amount: int):
 	queue_redraw()
