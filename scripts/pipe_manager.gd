@@ -6,7 +6,8 @@ var pipes: Array[Node2D] = []
 func add_pipe(pipe: Node2D) -> void:
 	pipes.append(pipe)
 
-func tick() -> void:	
+# return 1 for success
+func tick() -> int:	
 	# Run one simultaneous simulation step.
 	
 	# Phase 1: Calculate all planned transfers
@@ -41,4 +42,8 @@ func tick() -> void:
 	# Phase 2: Apply all inflows simultaneously
 	for pipe in transfers.keys():
 		for amt in transfers[pipe]:
-			pipe.receive(amt)
+			var status = pipe.receive(amt)
+			
+			if (status == -1):
+				return 1
+	return 0

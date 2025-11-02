@@ -17,7 +17,6 @@ func _setup_water(start_sum: int):
 
 	for node in get_tree().get_nodes_in_group("LogicalPipes"):
 		manager.add_pipe(node)
-		node.on_full = func(): print("pipe is full!")
 
 	var first_pipe = manager.pipes[0]
 	first_pipe.add_water(start_sum)
