@@ -18,11 +18,6 @@ var connected_pipes: Array[Node2D] = []
 var color = Color(0, 0, 1)
 var water_container_size = Vector2(26, 10)
 
-#func open_valve():
-	#open = true
-#func close_valve():
-	#open = false
-
 @onready var serial_controller: Node3D = get_node("SerialController")
 	
 func isOpen():
