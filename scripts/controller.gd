@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	
 	if num_pressed != -1:
 		# Avoid repeated triggering while key is held down
-		_load_world_for_number(num_pressed)
+		await _load_world_for_number(num_pressed)
 
 
 func _get_number_key_pressed() -> int:
@@ -45,15 +45,9 @@ func _get_number_key_pressed() -> int:
 func _load_world_for_number(num_pressed: int) -> void:
 	print("Loading world:", num_pressed)
 	
-	# Free all child nodes except ones with _serial_start()
 	for child in get_children():
 		if not child.has_method("_serial_start"):
 			child.queue_free()
 	
-	# Give Godot one frame to process the frees before instantiating new stuff
 	await get_tree().process_frame
-	
-	load_world_scene(num_pressed)
-	
-	# Optional: Wait 1 second after loading (async-friendly)
-	await get_tree().create_timer(1.0).timeout
+	load_world_scene(num_pressed)	

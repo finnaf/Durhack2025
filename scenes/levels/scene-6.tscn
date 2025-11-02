@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_7upjh"]
 [ext_resource type="Script" uid="uid://b470ydv2l52om" path="res://scripts/pipe_manager.gd" id="5_iq5sm"]
 
-[node name="Game" type="Node2D"]
+[node name="Game2" type="Node2D"]
 script = ExtResource("1_18xs0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
