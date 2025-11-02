@@ -30,6 +30,7 @@ position = Vector2(14, -20)
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
 position = Vector2(243, 196)
 magnitude = 4
+sensors = Array[int]([7])
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]

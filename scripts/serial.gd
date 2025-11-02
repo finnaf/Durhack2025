@@ -4,17 +4,19 @@ var serial: GdSerial
 var serial_thread: Thread
 var stop_thread := false
 
-var analogue_values: Array
-var digital_values: Array
+var analogue_values: Array = []
+var digital_values: Array = []
 
 
 func _ready():
+	analogue_values.resize(6)
+	digital_values.resize(4)
 	_serial_start()
 
 
 func _serial_start():
 	serial = GdSerial.new()
-	serial.set_port("/dev/ttyUSB0")
+	serial.set_port("COM8")
 	serial.set_baud_rate(9600)
 	serial.set_timeout(1000)
 	
@@ -48,10 +50,10 @@ func _serial_loop():
 
 
 func _update_sensors(_analogue_values: Array, _digital_values: Array):
-	for i in range(len(analogue_values)):
+	for i in range(len(_analogue_values)):
 		analogue_values[i] = _analogue_values[i]
 	
-	for i in range(len(digital_values)):
+	for i in range(len(_digital_values)):
 		digital_values[i] = _digital_values[i]
 
 var _sensor_to_pin = {
@@ -61,25 +63,26 @@ var _sensor_to_pin = {
 	Globals.SensorType.JOYSTICK_Y: [analogue_values, 3],
 	Globals.SensorType.JOYSTICK_Z: [digital_values, 3],
 	Globals.SensorType.HALL_EFFECT_SENSOR: [digital_values, 1],
-	Globals.SensorType.TOUCH_SENSOR: [digital_values, 0],
-	Globals.SensorType.BUTTON: [digital_values, 2],
+	Globals.SensorType.TOUCH_SENSOR: [digital_values, 2],
+	Globals.SensorType.BUTTON: [digital_values, 0],
 	Globals.SensorType.STEAM_SENSOR: [analogue_values, 4],
 	Globals.SensorType.RAGE_SENSOR: [analogue_values, 5]
 }
 
 func isTriggered(sensor: Globals.SensorType):
-	var values = _sensor_to_pin[sensor][0]
 	var pin = _sensor_to_pin[sensor][1]
 	
 	match sensor:
-		Globals.SensorType.POTENTIOMETER: values[pin] > 230
-		Globals.SensorType.WET_SENSOR: values[pin] > 400
-		Globals.SensorType.JOYSTICK_X: values[pin] > 1000
-		Globals.SensorType.JOYSTICK_Y: values[pin] > 1000
-		Globals.SensorType.JOYSTICK_Z: values[pin] == 1
-		Globals.SensorType.HALL_EFFECT_SENSOR: values[pin] == 1
-		Globals.SensorType.TOUCH_SENSOR: values[pin] == 1
-		Globals.SensorType.BUTTON: values[pin] == 1
-		Globals.SensorType.STEAM_SENSOR: values[pin] > 100
-		Globals.SensorType.RAGE_SENSOR: values[pin] > 30
+		Globals.SensorType.POTENTIOMETER: return analogue_values[pin] > 230
+		Globals.SensorType.WET_SENSOR: return analogue_values[pin] > 400
+		Globals.SensorType.JOYSTICK_X: return analogue_values[pin] > 1000
+		Globals.SensorType.JOYSTICK_Y: return analogue_values[pin] > 1000
+		Globals.SensorType.JOYSTICK_Z: return digital_values[pin] == 1
+		Globals.SensorType.HALL_EFFECT_SENSOR: return digital_values[pin] == 1
+		Globals.SensorType.TOUCH_SENSOR: return digital_values[pin] == 1
+		Globals.SensorType.BUTTON: return digital_values[pin] == 1
+		Globals.SensorType.STEAM_SENSOR: return analogue_values[pin] > 100
+		Globals.SensorType.RAGE_SENSOR: return analogue_values[pin] > 30
+	
+	return false
    

@@ -9,6 +9,7 @@ var paused: bool = true
 var tick_acc := 0.0
 
 func _ready():
+	manager = load("res://scripts/pipe_manager.gd").new()
 	_setup_water(100)
 
 func _physics_process(delta: float) -> void:
