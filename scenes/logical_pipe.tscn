@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfb5765les330"]
-
-[ext_resource type="Script" uid="uid://7fu2655x425d" path="res://logical_pipe.gd" id="1_nmga0"]
-
-[node name="LogicalPipe" type="Node2D"]
-script = ExtResource("1_nmga0")
