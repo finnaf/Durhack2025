@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2r8vt2vkhgkb"]
+
+[ext_resource type="Script" uid="uid://dyyqc4o55d4md" path="res://scenes/pipe_graphic/pipe-graphic.gd" id="1_22l01"]
+[ext_resource type="SpriteFrames" uid="uid://s6womk1juexn" path="res://resources/pipes.tres" id="2_tkt5b"]
+
+[node name="PipeGraphic" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_22l01")
+
+[node name="BackgroundPipe" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("2_tkt5b")
+
+[node name="Image" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_tkt5b")
