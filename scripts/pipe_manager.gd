@@ -1,22 +1,23 @@
-class_name PipeStateManager
-extends RefCounted
+extends Node
 
-var pipes: Array[Node2D] = []
+var pipes: Array[Node2D]
 
 func add_pipe(pipe: Node2D) -> void:
 	pipes.append(pipe)
 
+func _ready() -> void:
+	pipes.clear()
+	pipes = []
+
 # return 1 for success
 func tick() -> int:	
-	# Run one simultaneous simulation step.
-	
 	# Phase 1: Calculate all planned transfers
 	var transfers: Dictionary = {}
 	for pipe in pipes:
 		transfers[pipe] = []
 
 	for pipe in pipes:
-		if not pipe.open or pipe.water <= 0 or pipe.is_leaf():
+		if not pipe.isOpen() or pipe.water <= 0 or pipe.is_leaf():
 			continue
 
 		# Find all connected pipes that can receive water
