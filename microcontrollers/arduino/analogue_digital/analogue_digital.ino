@@ -9,6 +9,8 @@ uint8_t digital_pins[] = {4, 5, 6, 7};
 int analogue_values[NUM_ANALOGUE_PINS];
 int digital_values[NUM_DIGITAL_PINS];
 
+char paddedString[5];
+
 void setup() {
   // Open Serial Link
   Serial.begin(9600);
@@ -24,7 +26,8 @@ void loop() {
   // Read and Update Values for all Analogue Pins
   for (int i = 0; i < NUM_ANALOGUE_PINS; i++) {
     analogue_values[i] = analogRead(analogue_pins[i]);
-    Serial.print(analogue_values[i]);
+    sprintf(paddedString, "%04d", analogue_values[i]);
+    Serial.print(paddedString);
     
     // Conditionally print the comma to clean up the output
     if (i < NUM_ANALOGUE_PINS - 1) { 
