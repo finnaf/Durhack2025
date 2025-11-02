@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://q8h6q65ts51s"]
+[gd_scene load_steps=6 format=3 uid="uid://ccin47we7qjip"]
 
 [ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root_manager.gd" id="1_18xs0"]
-[ext_resource type="Texture2D" uid="uid://c1tuw15lxlrba" path="res://images/PipeBackground.jpg" id="2_iq5sm"]
+[ext_resource type="Texture2D" uid="uid://bw5fpmydpb8ji" path="res://images/PipeBackground.jpg" id="2_iq5sm"]
 [ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe/logical_pipe.tscn" id="3_0wrtk"]
 [ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_7upjh"]
+[ext_resource type="Script" uid="uid://b470ydv2l52om" path="res://scripts/pipe_manager.gd" id="5_iq5sm"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_18xs0")
@@ -36,7 +37,6 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
 position = Vector2(318, 156)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe4")])
 
@@ -45,7 +45,6 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
 position = Vector2(162, 155)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe4")])
 
@@ -54,7 +53,6 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe4" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
 position = Vector2(243, 230)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe5")])
 
@@ -63,9 +61,11 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe5" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
 position = Vector2(242, 296)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe5" instance=ExtResource("4_7upjh")]
 position = Vector2(14, -20)
+
+[node name="PipeMan" type="Node" parent="."]
+script = ExtResource("5_iq5sm")
