@@ -1,5 +1,5 @@
 #define NUM_ANALOGUE_PINS 4
-#define NUM_DIGITAL_PINS 3
+#define NUM_DIGITAL_PINS 4
 
 // List of Pins
 uint8_t analogue_pins[] = {A8, A9, A10, A11, A12, A13};
