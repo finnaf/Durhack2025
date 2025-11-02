@@ -1,10 +1,13 @@
 extends Node2D
 
-@export var open := true
 @export var water: int = 0
 @export var magnitude: int = 3
 @export var is_vertical := true
 @export var is_final := false
+
+
+
+@export var sensors: Array[Globals.SensorType] = []
 
 var capacity: int
 
@@ -15,14 +18,24 @@ var connected_pipes: Array[Node2D] = []
 var color = Color(0, 0, 1)
 var water_container_size = Vector2(26, 10)
 
-func open_valve():
-	open = true
-func close_valve():
-	open = false
+#func open_valve():
+	#open = true
+#func close_valve():
+	#open = false
+
+@onready var serial_controller: Node3D = get_node("SerialController")
+	
+func isOpen():
+	for sensor in sensors:
+		if (!serial_controller.isTriggered(sensor)):
+			return false
+	
+	return true
 
 func add_water(amount: int):
 	queue_redraw()
 	water += amount
+
 func sub_water(amount: int):
 	add_water(-amount)
 
@@ -33,11 +46,12 @@ func is_leaf():
 	return connections.is_empty()
 
 
-
 func _ready():
 	_resolve_connections()
 	
 	capacity = Globals.PIPESIZE.x * magnitude
+	
+	
 
 func _draw():
 	if is_vertical:
@@ -73,4 +87,4 @@ func _resolve_connections():
 			connected_pipes.append(node)
 
 func _to_string() -> String:
-	return "open=%s water: %.2f/%d" % [str(open), water, capacity]
+	return "open=%s water: %.2f/%d" % [str(isOpen()), water, capacity]
