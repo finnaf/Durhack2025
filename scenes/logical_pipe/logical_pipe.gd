@@ -15,7 +15,7 @@ var capacity: int
 
 var connected_pipes: Array[Node2D] = []
 
-var color = Color(0, 0, 1)
+var color = Color(0, 0.2, 0.9)
 var water_container_size = Vector2(26, 10)
 
 @onready var serial_controller: Node3D = get_node("SerialController")
@@ -59,10 +59,10 @@ func _draw():
 			color
 		)
 	else:
-		water_container_size.y = water / magnitude
-		water_container_size.x = water
+		water_container_size.y = (water / magnitude)
+		water_container_size.x = magnitude * Globals.WATERSIZE.x
 		draw_rect(
-			Rect2(Vector2(1, -water_container_size.y), water_container_size), 
+			Rect2(Vector2(1, -water_container_size.y - 8), water_container_size), 
 			color
 		)
 

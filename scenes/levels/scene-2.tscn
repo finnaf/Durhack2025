@@ -19,10 +19,28 @@ visible = false
 texture = ExtResource("2_7tw2n")
 offset = Vector2(500, 365)
 
+[node name="LogicalPipe4" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
+position = Vector2(239, 62)
+magnitude = 4
+is_vertical = false
+connections = Array[NodePath]([NodePath("../LogicalPipe0")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe4" instance=ExtResource("4_tsljc")]
+position = Vector2(14, -20)
+animation_frame = 1
+
+[node name="PipeGraphic-1" parent="LogicalPipe4" instance=ExtResource("4_tsljc")]
+position = Vector2(50, -20)
+animation_frame = 1
+
+[node name="PipeGraphic-2" parent="LogicalPipe4" instance=ExtResource("4_tsljc")]
+position = Vector2(86, -20)
+animation_frame = 1
+
 [node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
-position = Vector2(243, 40)
+position = Vector2(239, 101)
 magnitude = 1
-connections = Array[NodePath]([NodePath("../LogicalPipe1")])
+connections = Array[NodePath]([NodePath(".")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
@@ -32,7 +50,7 @@ position = Vector2(14, -20)
 animation_frame = 15
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
-position = Vector2(243, 79)
+position = Vector2(239, 140)
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 
@@ -44,7 +62,7 @@ position = Vector2(14, -20)
 animation_frame = 11
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
-position = Vector2(243, 119)
+position = Vector2(239, 180)
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
@@ -56,7 +74,7 @@ position = Vector2(14, -20)
 animation_frame = 15
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
-position = Vector2(243, 158)
+position = Vector2(239, 219)
 magnitude = 1
 is_final = true
 
