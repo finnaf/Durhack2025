@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_ekp0p"]
 [ext_resource type="Script" uid="uid://b470ydv2l52om" path="res://scripts/pipe_manager.gd" id="5_knccp"]
 
-[node name="Game" type="Node2D"]
+[node name="Game2" type="Node2D"]
 script = ExtResource("1_csnjb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -31,9 +31,7 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_qmx41")]
 position = Vector2(243, 119)
-open = false
 magnitude = 2
-
 connections = Array[NodePath]([NodePath("../LogicalPipe2"), NodePath("../LogicalPipe3")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_ekp0p")]
@@ -48,7 +46,6 @@ position = Vector2(14, -60)
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_qmx41")]
 position = Vector2(203, 199)
-open = false
 connections = Array[NodePath]([NodePath("../LogicalPipe4")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_ekp0p")]
@@ -72,7 +69,6 @@ animation_frame = 18
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_qmx41")]
 position = Vector2(283, 199)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe4"), NodePath("")])
 
@@ -93,7 +89,6 @@ animation_frame = 13
 
 [node name="LogicalPipe4" parent="." groups=["LogicalPipes"] instance=ExtResource("3_qmx41")]
 position = Vector2(243, 279)
-open = false
 magnitude = 4
 is_final = true
 connections = Array[NodePath]([NodePath("")])

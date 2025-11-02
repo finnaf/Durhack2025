@@ -49,6 +49,9 @@ func _ready():
 	
 
 func _draw():
+	if water <= 1:
+		return
+	
 	if is_vertical:
 		water_container_size.y = water
 		draw_rect(
