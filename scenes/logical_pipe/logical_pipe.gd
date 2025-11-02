@@ -3,6 +3,7 @@ extends Node2D
 @export var water: int = 0
 @export var magnitude: int = 3
 @export var is_vertical := true
+@export var is_final := false
 
 
 
@@ -11,7 +12,6 @@ extends Node2D
 var capacity: int
 
 @export var connections: Array[NodePath] = []
-var on_full: Callable
 
 var connected_pipes: Array[Node2D] = []
 
@@ -54,8 +54,6 @@ func _ready():
 	
 
 func _draw():
-	
-	
 	if is_vertical:
 		water_container_size.y = water
 		draw_rect(
@@ -76,9 +74,10 @@ func receive(amount: int) -> int:
 	
 	var accepted = min(amount, capacity - water)
 	add_water(accepted)
+	
+	if (water == capacity and is_final):
+		return -1
 
-	if (water == capacity and on_full):
-		on_full.call()
 	return accepted
 
 func _resolve_connections():

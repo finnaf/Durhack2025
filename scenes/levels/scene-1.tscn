@@ -9,12 +9,12 @@
 script = ExtResource("1_b7fmw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 506.0
 offset_bottom = 369.0
 color = Color(0.90574, 0.503502, 0.661059, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_dtctc")
 offset = Vector2(500, 365)
 
@@ -25,36 +25,30 @@ connections = Array[NodePath]([NodePath("../LogicalPipe1")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -20)
-frame_choice = 2
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
 position = Vector2(243, 196)
-open = false
 magnitude = 4
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -99)
-frame_choice = 2
 
 [node name="PipeGraphic-1" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -59)
-frame_choice = 2
 
 [node name="PipeGraphic-2" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -19)
-frame_choice = 10
 animation_frame = 10
 
 [node name="PipeGraphic-3" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -139)
-frame_choice = 2
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
 position = Vector2(243, 237)
 magnitude = 1
-connections = Array[NodePath]([NodePath(""), NodePath(""), NodePath("")])
+is_final = true
+connections = Array[NodePath]([NodePath(".")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -20)
-frame_choice = 2

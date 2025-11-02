@@ -1,6 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://s6womk1juexn"]
+[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://s6womk1juexn"]
 
-[ext_resource type="Texture2D" uid="uid://bcyppfhw5qu8p" path="res://images/PipesSpritesheet.png" id="1_qh451"]
+[ext_resource type="Texture2D" uid="uid://bna0436lx6s1t" path="res://images/PipeSprites.png" id="1_qh451"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ut06u"]
 atlas = ExtResource("1_qh451")
@@ -86,6 +86,10 @@ region = Rect2(0, 120, 40, 40)
 atlas = ExtResource("1_qh451")
 region = Rect2(40, 120, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5fxc"]
+atlas = ExtResource("1_qh451")
+region = Rect2(80, 120, 40, 40)
+
 [resource]
 animations = [{
 "frames": [{
@@ -151,6 +155,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ql43l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5fxc")
 }],
 "loop": true,
 "name": &"default",
