@@ -65,6 +65,7 @@ position = Vector2(14, -20)
 position = Vector2(242, 296)
 open = false
 magnitude = 1
+is_final = true
 connections = Array[NodePath]([NodePath("")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe5" instance=ExtResource("4_7upjh")]
