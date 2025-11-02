@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var TICKSPEED = 0.2
 var tick_acc := 0.0
 
 var serial: GdSerial
@@ -13,16 +12,16 @@ func _ready():
 	_assign_pipes()
 	_serial_start()
 	
-	_setup_water()
+	_setup_water(300)
 
 
 func _physics_process(delta: float) -> void:
 	tick_acc += delta
-	if tick_acc >= TICKSPEED:
+	if tick_acc >= Globals.TICKSPEED:
 		manager.tick()
 		tick_acc = 0.0
 
-func _setup_water():
+func _setup_water(start_sum: float):
 	manager = PipeStateManager.new()
 
 	for node in get_tree().get_nodes_in_group("LogicalPipes"):
@@ -30,7 +29,7 @@ func _setup_water():
 		node.on_full = func(): print("pipe is full!")
 
 	var first_pipe = manager.pipes[0]
-	first_pipe.add_water(10)
+	first_pipe.add_water(start_sum)
 
 func _assign_pipes():
 	for pipe_group in get_tree().get_nodes_in_group("pipe_group"):

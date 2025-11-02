@@ -2,7 +2,7 @@ extends Node2D
 
 @export var open := true
 @export var water := 0.0
-@export var capacity := 10.0
+@export var capacity := 300.0
 
 @export var connections: Array[NodePath] = []
 var on_full: Callable
@@ -35,7 +35,7 @@ func _ready():
 	_resolve_connections()
 
 func _draw():
-	water_container_size.y = (32*3) * (water / capacity)
+	water_container_size.y = water
 	draw_rect(
 		Rect2(Vector2(0, -water_container_size.y), water_container_size), 
 		color
