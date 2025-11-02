@@ -10,12 +10,12 @@
 script = ExtResource("1_tftit")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 506.0
 offset_bottom = 369.0
 color = Color(0.90574, 0.503502, 0.661059, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_vvjme")
 offset = Vector2(500, 365)
 
@@ -28,23 +28,27 @@ connections = Array[NodePath]([NodePath("../LogicalPipe1"), NodePath("../Logical
 position = Vector2(14, -20)
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
-position = Vector2(300, 121)
+position = Vector2(302, 116)
 magnitude = 1
+sensors = Array[int]([6])
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_fxhog")]
 position = Vector2(14, -20)
+animation_frame = 20
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
-position = Vector2(189, 127)
+position = Vector2(189, 117)
 magnitude = 1
+sensors = Array[int]([8])
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_fxhog")]
 position = Vector2(14, -20)
+animation_frame = 21
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
-position = Vector2(251, 186)
+position = Vector2(242, 180)
 magnitude = 1
 is_final = true
 connections = Array[NodePath]([NodePath("")])

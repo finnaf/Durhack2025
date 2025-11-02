@@ -21,11 +21,13 @@ offset = Vector2(500, 365)
 
 [node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
 position = Vector2(243, 40)
+water = 40
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe1")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_42j6g")]
 position = Vector2(14, -20)
+animation_frame = 9
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
 position = Vector2(243, 196)

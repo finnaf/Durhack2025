@@ -7,8 +7,11 @@ extends Node2D
 
 @onready var serial_controller = get_tree().root.find_child("SerialController", true, false)	
 func isOpen():
-	print(str(sensors))
 	for sensor in sensors:
+		if (serial_controller == null):
+			print("No serial")
+			continue
+		
 		if (!serial_controller.isTriggered(sensor)):
 			return false
 	
@@ -16,11 +19,9 @@ func isOpen():
 
 
 @export var sensors: Array[Globals.SensorType] = []
-
-var capacity: int
-
 @export var connections: Array[NodePath] = []
 
+var capacity: int
 var connected_pipes: Array[Node2D] = []
 
 var color = Color(0, 0.2, 0.9)
@@ -42,10 +43,7 @@ func is_leaf():
 
 func _ready():
 	_resolve_connections()
-	
 	capacity = Globals.PIPESIZE.x * magnitude
-	
-	
 
 func _draw():
 	if water <= 1:

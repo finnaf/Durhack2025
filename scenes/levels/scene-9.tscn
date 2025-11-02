@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://baaxjr2iy1e25"]
+
+[ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root_manager.gd" id="1_ily7g"]
+[ext_resource type="Script" uid="uid://b470ydv2l52om" path="res://scripts/pipe_manager.gd" id="2_7fpto"]
+[ext_resource type="Texture2D" uid="uid://bw5fpmydpb8ji" path="res://images/PipeBackground.jpg" id="3_yye04"]
+[ext_resource type="Texture2D" uid="uid://bna0436lx6s1t" path="res://images/PipeSprites.png" id="4_ily7g"]
+[ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe/logical_pipe.tscn" id="6_yye04"]
+[ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="7_mnhh5"]
+
+[node name="Game2" type="Node2D"]
+script = ExtResource("1_ily7g")
+
+[node name="PipeMan" type="Node" parent="."]
+script = ExtResource("2_7fpto")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 506.0
+offset_bottom = 369.0
+color = Color(0.90574, 0.503502, 0.661059, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_yye04")
+offset = Vector2(500, 365)
+
+[node name="PipeSprites" type="Sprite2D" parent="."]
+position = Vector2(247, 225)
+texture = ExtResource("4_ily7g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 95.0
+offset_top = 47.0
+offset_right = 422.0
+offset_bottom = 124.0
+theme_override_font_sizes/normal_font_size = 56
+text = "Thank You!"
+
+[node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("6_yye04")]
+position = Vector2(627, 108)
+water = 600
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe2")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("7_mnhh5")]
+position = Vector2(14, -20)

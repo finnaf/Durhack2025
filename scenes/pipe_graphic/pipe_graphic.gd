@@ -6,7 +6,7 @@ extends Node2D
 @export_enum(
 	"Vertical", 
 	"Horizontal", 
-	"CornerLeft", 
+	"CornerLeft",
 	"CornerRight", 
 	"LLeft", 
 	"LRight", 
