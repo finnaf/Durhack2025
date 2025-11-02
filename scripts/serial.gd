@@ -4,8 +4,6 @@ var serial: GdSerial
 var serial_thread: Thread
 var stop_thread := false
 
-var manager: PipeStateManager
-
 var analogue_values: Array
 var digital_values: Array
 
@@ -33,10 +31,8 @@ func _exit_tree():
 	
 	if serial and serial.is_open():
 		serial.close()
-
 	if serial_thread:
 		serial_thread.wait_to_finish()
-
 
 func _serial_loop():
 	while not stop_thread and serial.is_open():
@@ -86,3 +82,4 @@ func isTriggered(sensor: Globals.SensorType):
 		Globals.SensorType.BUTTON: values[pin] == 1
 		Globals.SensorType.STEAM_SENSOR: values[pin] > 100
 		Globals.SensorType.RAGE_SENSOR: values[pin] > 30
+   

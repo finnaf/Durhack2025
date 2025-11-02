@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7nbkkivbe1fl"]
+[gd_scene load_steps=6 format=3 uid="uid://clixxelhtwrus"]
 
 [ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root_manager.gd" id="1_tftit"]
-[ext_resource type="Texture2D" uid="uid://c1tuw15lxlrba" path="res://images/PipeBackground.jpg" id="2_vvjme"]
+[ext_resource type="Texture2D" uid="uid://bw5fpmydpb8ji" path="res://images/PipeBackground.jpg" id="2_vvjme"]
 [ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe/logical_pipe.tscn" id="3_vqn72"]
 [ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_fxhog"]
+[ext_resource type="Script" uid="uid://b470ydv2l52om" path="res://scripts/pipe_manager.gd" id="5_vvjme"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_tftit")
@@ -28,7 +29,6 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
 position = Vector2(300, 121)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
@@ -37,7 +37,6 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
 position = Vector2(189, 127)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
@@ -46,9 +45,11 @@ position = Vector2(14, -20)
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
 position = Vector2(251, 186)
-open = false
 magnitude = 1
 connections = Array[NodePath]([NodePath("")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe3" instance=ExtResource("4_fxhog")]
 position = Vector2(14, -20)
+
+[node name="PipeMan" type="Node" parent="."]
+script = ExtResource("5_vvjme")

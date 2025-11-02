@@ -1,14 +1,14 @@
 extends Node2D
 
 @onready var bg = $Background
+@onready var manager: Node = $PipeMan
 
 signal level_done
 
 var paused: bool = true
 var tick_acc := 0.0
-var manager: PipeStateManager
 
-func _ready():	
+func _ready():
 	_setup_water(100)
 
 func _physics_process(delta: float) -> void:
@@ -30,10 +30,11 @@ func _physics_process(delta: float) -> void:
 			emit_signal("level_done")
 
 func _setup_water(start_sum: int):
-	manager = PipeStateManager.new()
-
 	for node in get_tree().get_nodes_in_group("LogicalPipes"):
 		manager.add_pipe(node)
 
 	var first_pipe = manager.pipes[0]
 	first_pipe.add_water(start_sum)
+
+func _exit_tree():
+	manager = null
