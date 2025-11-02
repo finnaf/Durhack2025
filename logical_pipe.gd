@@ -10,21 +10,36 @@ var on_full: Callable
 var connected_pipes: Array[Node2D] = []
 
 var color = Color(0, 0, 1)
-var size = Vector2(26, 10)
+var water_container_size = Vector2(26, 10)
 
-
-func _ready():
-	_resolve_connections()
-
-func _draw():
-	size.y = (32*3) * (water / capacity)
-	draw_rect(Rect2(Vector2(0, -size.y), size), color)
+func open_valve():
+	open = true
+func close_valve():
+	open = false
 
 func add_water(amount: float):
 	queue_redraw()
 	water += amount
 func sub_water(amount: float):
 	add_water(-amount)
+
+func set_capacity(amount: float):
+	capacity = amount
+
+func is_leaf():
+	return connections.is_empty()
+
+
+
+func _ready():
+	_resolve_connections()
+
+func _draw():
+	water_container_size.y = (32*3) * (water / capacity)
+	draw_rect(
+		Rect2(Vector2(0, -water_container_size.y), water_container_size), 
+		color
+	)
 
 func receive(amount: float) -> float:
 	if water >= capacity:

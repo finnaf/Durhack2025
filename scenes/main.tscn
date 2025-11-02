@@ -8,10 +8,6 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0wfyh")
 
-[node name="TickTimer" type="Timer" parent="."]
-process_callback = 0
-one_shot = true
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 740.0
 offset_bottom = 500.0
@@ -91,6 +87,7 @@ animation_frame = 2
 
 [node name="LogicalPipe4" parent="." groups=["LogicalPipes"] instance=ExtResource("3_jyhfs")]
 position = Vector2(340, 312)
+open = false
 connections = Array[NodePath]([NodePath("../LogicalPipe6")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe4" instance=ExtResource("2_sugp2")]
@@ -138,5 +135,3 @@ frame_choice = 2
 position = Vector2(14, -16)
 frame_choice = 10
 animation_frame = 3
-
-[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]

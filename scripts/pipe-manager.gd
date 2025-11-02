@@ -8,13 +8,14 @@ func add_pipe(pipe: Node2D) -> void:
 
 func tick() -> void:	
 	# Run one simultaneous simulation step.
+	
 	# Phase 1: Calculate all planned transfers
 	var transfers: Dictionary = {}
 	for pipe in pipes:
 		transfers[pipe] = []
 
 	for pipe in pipes:
-		if not pipe.open or pipe.water <= 0.0 or pipe.connected_pipes.is_empty():
+		if not pipe.open or pipe.water <= 0.0 or pipe.is_leaf():
 			continue
 
 		# Find all connected pipes that can receive water
@@ -41,17 +42,3 @@ func tick() -> void:
 	for pipe in transfers.keys():
 		for amt in transfers[pipe]:
 			pipe.receive(amt)
-
-
-func run(steps: int = 5, verbose: bool = false) -> void:
-	for t in range(steps):
-		if verbose:
-			print("\n--- Step %d ---" % [t + 1])
-			for p in pipes:
-				print(p)
-		tick()
-
-	if verbose:
-		print("\n--- Final State ---")
-		for p in pipes:
-			print(p)
