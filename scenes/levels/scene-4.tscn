@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7nbkkivbe1fl"]
+
+[ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root_manager.gd" id="1_tftit"]
+[ext_resource type="Texture2D" uid="uid://c1tuw15lxlrba" path="res://images/PipeBackground.jpg" id="2_vvjme"]
+[ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe/logical_pipe.tscn" id="3_vqn72"]
+[ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_fxhog"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_tftit")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 506.0
+offset_bottom = 369.0
+color = Color(0.90574, 0.503502, 0.661059, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_vvjme")
+offset = Vector2(500, 365)
+
+[node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
+position = Vector2(243, 40)
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe1"), NodePath("../LogicalPipe2")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_fxhog")]
+position = Vector2(14, -20)
+
+[node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
+position = Vector2(300, 121)
+open = false
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe3")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_fxhog")]
+position = Vector2(14, -20)
+
+[node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
+position = Vector2(189, 127)
+open = false
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe3")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_fxhog")]
+position = Vector2(14, -20)
+
+[node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
+position = Vector2(251, 186)
+open = false
+magnitude = 1
+connections = Array[NodePath]([NodePath("")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe3" instance=ExtResource("4_fxhog")]
+position = Vector2(14, -20)
