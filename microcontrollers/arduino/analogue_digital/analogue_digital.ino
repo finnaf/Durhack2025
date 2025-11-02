@@ -1,8 +1,8 @@
-#define NUM_ANALOGUE_PINS 1
+#define NUM_ANALOGUE_PINS 4
 #define NUM_DIGITAL_PINS 3
 
 // List of Pins
-uint8_t analogue_pins[] = {A11, A12, A13, A14, A15};
+uint8_t analogue_pins[] = {A8, A9, A10, A11, A12, A13};
 uint8_t digital_pins[] = {4, 5, 6, 7};
 
 // Define Array to Store Current Values
@@ -25,16 +25,24 @@ void loop() {
   for (int i = 0; i < NUM_ANALOGUE_PINS; i++) {
     analogue_values[i] = analogRead(analogue_pins[i]);
     Serial.print(analogue_values[i]);
-    Serial.print(", ");
+    
+    // Conditionally print the comma to clean up the output
+    if (i < NUM_ANALOGUE_PINS - 1) { 
+      Serial.print(", ");
   }
-  Serial.println("}");
+  }
+  Serial.print("}");
 
-  Serial.print("Digital: {");
+  Serial.print("    Digital: {");
   // Read and Update Values for all Digital Pins
   for (int i = 0; i < NUM_DIGITAL_PINS; i++) {
     digital_values[i] = digitalRead(digital_pins[i]);
     Serial.print(digital_values[i]);
-    Serial.print(", ");
+    
+    // Conditionally print the comma to clean up the output
+    if (i < NUM_DIGITAL_PINS - 1) { 
+      Serial.print(", ");
+  }
   }
   Serial.println("}");
 }
