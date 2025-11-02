@@ -2,7 +2,7 @@
 #define NUM_DIGITAL_PINS 4
 #define JOYSTICK_Z_PIN 7
 
-#define VERBOSE
+// #define VERBOSE
 
 // List of Pins
 uint8_t analogue_pins[] = {A8, A9, A10, A11, A12, A13};
@@ -49,7 +49,7 @@ void loop() {
 
   Serial.print("    Digital: {");
 #else
-  Serial.write((byte*)analogue_values, sizeof(analogue_values))
+  Serial.write((byte*)analogue_values, sizeof(analogue_values));
 #endif
 
   // Read and Update Values for all Digital Pins
@@ -73,7 +73,7 @@ void loop() {
 #ifdef VERBOSE
   Serial.println("}");
 #else
-  Serial.write((byte*)digital_values, sizeof(digital_values))
-  Serial.println("")
+  Serial.write((byte*)digital_values, sizeof(digital_values));
+  Serial.println("");
 #endif
 }
