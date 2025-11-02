@@ -46,6 +46,7 @@ position = Vector2(14, -20)
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_vqn72")]
 position = Vector2(251, 186)
 magnitude = 1
+is_final = true
 connections = Array[NodePath]([NodePath("")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe3" instance=ExtResource("4_fxhog")]
