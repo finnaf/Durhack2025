@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://0hucmjbhjak1"]
 
 [ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root_manager.gd" id="1_ugwac"]
-[ext_resource type="Texture2D" uid="uid://pco2mltbnapp" path="res://images/PipeBackground.jpg" id="2_7tw2n"]
+[ext_resource type="Texture2D" uid="uid://bw5fpmydpb8ji" path="res://images/PipeBackground.jpg" id="2_7tw2n"]
 [ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe/logical_pipe.tscn" id="3_dussk"]
 [ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_tsljc"]
 
@@ -20,39 +20,31 @@ offset = Vector2(500, 365)
 
 [node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(243, 40)
-water = 0
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe1")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
-frame_choice = 2
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(243, 79)
-water = 0
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
-frame_choice = 2
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(243, 119)
-water = 0
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
-frame_choice = 2
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(243, 158)
-water = 0
 magnitude = 1
 
 [node name="PipeGraphic-0" parent="LogicalPipe3" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
-frame_choice = 2

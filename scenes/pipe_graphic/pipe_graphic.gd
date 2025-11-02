@@ -3,7 +3,6 @@ extends Node2D
 @onready var image: AnimatedSprite2D = $Image
 @onready var bg_pipe: AnimatedSprite2D = $BackgroundPipe
 
-@export var frame_choice: int = 0
 @export_enum(
 	"Vertical", 
 	"Horizontal", 
