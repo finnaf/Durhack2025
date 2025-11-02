@@ -1,11 +1,11 @@
 extends Node2D
 
-@onready var tick_timer := $TickTimer
+@onready var tick_timer: Timer = $TickTimer
+@export var TICKSPEED = 0.2
 
 var serial: GdSerial
 var reader_thread: Thread
 var stop_thread := false
-var is_watering := false
 
 var manager: PipeStateManager
 
@@ -15,11 +15,9 @@ func _ready():
 	
 	_setup_water()
 
-func _physics_process(delta: float) -> void:
-	if is_watering and tick_timer.is_stopped():
-		manager.tick()
-		tick_timer.start()
-
+func _on_tick_timer_timeout() -> void:
+	manager.tick()
+	tick_timer.start(TICKSPEED)
 
 func _setup_water():
 	manager = PipeStateManager.new()
@@ -31,7 +29,8 @@ func _setup_water():
 	var first_pipe = manager.pipes[0]
 	first_pipe.add_water(10)
 	
-	is_watering = true
+	tick_timer.wait_time = TICKSPEED
+	tick_timer.start()
 
 func _assign_pipes():
 	for pipe_group in get_tree().get_nodes_in_group("pipe_group"):
