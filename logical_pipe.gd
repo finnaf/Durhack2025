@@ -16,7 +16,8 @@ func _ready():
 	_resolve_connections()
 
 func _draw():
-	draw_rect(Rect2(Vector2(0, 5), size), color)
+	size.y = (32*3) * (water / capacity)
+	draw_rect(Rect2(Vector2(0, -size.y), size), color)
 
 func receive(amount: float) -> float:
 	if water >= capacity:
