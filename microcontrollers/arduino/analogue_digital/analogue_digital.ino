@@ -10,7 +10,7 @@ uint8_t digital_pins[] = {4, 5, 6, 7};
 
 // Define Array to Store Current Values
 int analogue_values[NUM_ANALOGUE_PINS];
-int digital_values[NUM_DIGITAL_PINS];
+byte digital_values[NUM_DIGITAL_PINS];
 
 char paddedString[5];
 
