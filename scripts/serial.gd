@@ -79,8 +79,8 @@ func isTriggered(sensor: Globals.SensorType):
 	match sensor:
 		Globals.SensorType.POTENTIOMETER: return analogue_values[pin] > 230
 		Globals.SensorType.WET_SENSOR: return analogue_values[pin] > 400
-		Globals.SensorType.JOYSTICK_X: return analogue_values[pin] > 600
-		Globals.SensorType.JOYSTICK_Y: return analogue_values[pin] > 600
+		Globals.SensorType.JOYSTICK_X: return abs(analogue_values[pin] - 520) > 100
+		Globals.SensorType.JOYSTICK_Y: return abs(analogue_values[pin] - 520) > 100
 		Globals.SensorType.JOYSTICK_Z: return digital_values[pin] == 1
 		Globals.SensorType.HALL_EFFECT_SENSOR: return digital_values[pin] == 1
 		Globals.SensorType.TOUCH_SENSOR: return digital_values[pin] == 1

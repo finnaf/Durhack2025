@@ -31,7 +31,7 @@ position = Vector2(14, -20)
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_njcut")]
 position = Vector2(243, 120)
 magnitude = 2
-sensors = Array[int]([9, 5])
+sensors = Array[int]([5, 6])
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_ooik3")]
@@ -46,7 +46,7 @@ animation_frame = 19
 
 [node name="PipeGraphic-3" parent="LogicalPipe1" instance=ExtResource("4_ooik3")]
 position = Vector2(-26, -20)
-animation_frame = 13
+animation_frame = 20
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_njcut")]
 position = Vector2(243, 160)

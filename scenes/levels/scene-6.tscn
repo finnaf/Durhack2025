@@ -20,7 +20,7 @@ texture = ExtResource("2_iq5sm")
 offset = Vector2(500, 365)
 
 [node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
-position = Vector2(318, 38)
+position = Vector2(323, 32)
 water = 600
 magnitude = 1
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
@@ -29,7 +29,7 @@ connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 position = Vector2(14, -20)
 
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
-position = Vector2(162, 37)
+position = Vector2(163, 37)
 water = 300
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
@@ -37,22 +37,22 @@ connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 position = Vector2(14, -20)
 
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
-position = Vector2(318, 156)
+position = Vector2(322, 151)
 sensors = Array[int]([9])
 connections = Array[NodePath]([NodePath("../LogicalPipe4")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_7upjh")]
-position = Vector2(14, -20)
+position = Vector2(15, -20)
 animation_frame = 13
 
 [node name="PipeGraphic-1" parent="LogicalPipe2" instance=ExtResource("4_7upjh")]
-position = Vector2(14, -60)
+position = Vector2(15, -60)
 
 [node name="PipeGraphic-2" parent="LogicalPipe2" instance=ExtResource("4_7upjh")]
-position = Vector2(14, -99)
+position = Vector2(15, -99)
 
 [node name="LogicalPipe3" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
-position = Vector2(162, 155)
+position = Vector2(163, 155)
 sensors = Array[int]([1])
 connections = Array[NodePath]([NodePath("../LogicalPipe4")])
 
@@ -76,6 +76,32 @@ connections = Array[NodePath]([NodePath("../LogicalPipe5")])
 position = Vector2(14, -20)
 animation_frame = 15
 
+[node name="PipeGraphic-1" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(14, -20)
+animation_frame = 9
+
+[node name="PipeGraphic-2" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(-26, -20)
+animation_frame = 1
+
+[node name="PipeGraphic-3" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(-66, -20)
+animation_frame = 4
+
+[node name="PipeGraphic-4" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(-66, -55)
+
+[node name="PipeGraphic-5" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(54, -20)
+animation_frame = 1
+
+[node name="PipeGraphic-6" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(94, -20)
+animation_frame = 5
+
+[node name="PipeGraphic-7" parent="LogicalPipe4" instance=ExtResource("4_7upjh")]
+position = Vector2(94, -59)
+
 [node name="LogicalPipe5" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
 position = Vector2(243, 310)
 magnitude = 2
@@ -91,23 +117,12 @@ position = Vector2(14, -60)
 script = ExtResource("5_iq5sm")
 
 [node name="LogicalPipe6" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
-position = Vector2(243, 390)
+position = Vector2(243, 372)
 magnitude = 2
-connections = Array[NodePath]([NodePath("../LogicalPipe7")])
+connections = Array[NodePath]([NodePath("")])
 
 [node name="PipeGraphic-1" parent="LogicalPipe6" instance=ExtResource("4_7upjh")]
 position = Vector2(14, -20)
 
 [node name="PipeGraphic-0" parent="LogicalPipe6" instance=ExtResource("4_7upjh")]
-position = Vector2(14, -60)
-
-[node name="LogicalPipe7" parent="." groups=["LogicalPipes"] instance=ExtResource("3_0wrtk")]
-position = Vector2(16, 377)
-magnitude = 2
-
-[node name="PipeGraphic-1" parent="LogicalPipe7" instance=ExtResource("4_7upjh")]
-position = Vector2(14, -20)
-animation_frame = 9
-
-[node name="PipeGraphic-0" parent="LogicalPipe7" instance=ExtResource("4_7upjh")]
 position = Vector2(14, -60)
