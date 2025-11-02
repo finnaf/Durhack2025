@@ -10,7 +10,7 @@ func _ready():
 	_assign_pipes()
 	_serial_start()
 	
-	#_run_water()
+	_run_water()
 
 
 func _run_water():
