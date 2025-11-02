@@ -1,0 +1,57 @@
+class_name PipeStateManager
+extends RefCounted
+
+var pipes: Array[Node2D] = []
+
+func add_pipe(pipe: Node2D) -> void:
+	pipes.append(pipe)
+
+func tick() -> void:
+	# Run one simultaneous simulation step.
+	# Phase 1: Calculate all planned transfers
+	var transfers: Dictionary = {}
+	for pipe in pipes:
+		transfers[pipe] = []
+
+	for pipe in pipes:
+		if not pipe.open or pipe.water <= 0.0 or pipe.connected_pipes.is_empty():
+			continue
+
+		# Find all connected pipes that can receive water
+		var available_children: Array[Node2D] = []
+		for child in pipe.connected_pipes:
+			if child.water < child.capacity:
+				available_children.append(child)
+
+		var total_outflow: float = 0.0
+		var amount_per_child: float = 0.0
+
+		if available_children.size() > 0:
+			total_outflow = min(pipe.water, float(available_children.size()))
+			amount_per_child = total_outflow / float(available_children.size())
+
+		# Record how much to send to each connection
+		for child in available_children:
+			transfers[child].append(amount_per_child)
+
+		# Deduct from parent immediately (so we don't double count)
+		pipe.water -= total_outflow
+
+	# Phase 2: Apply all inflows simultaneously
+	for pipe in transfers.keys():
+		for amt in transfers[pipe]:
+			pipe.receive(amt)
+
+
+func run(steps: int = 5, verbose: bool = false) -> void:
+	for t in range(steps):
+		if verbose:
+			print("\n--- Step %d ---" % [t + 1])
+			for p in pipes:
+				print(p)
+		tick()
+
+	if verbose:
+		print("\n--- Final State ---")
+		for p in pipes:
+			print(p)
