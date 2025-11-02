@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhcrh3hpawdt3"]
+
+[ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root_manager.gd" id="1_chv4m"]
+[ext_resource type="Texture2D" uid="uid://c1tuw15lxlrba" path="res://images/PipeBackground.jpg" id="2_vws7v"]
+[ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe/logical_pipe.tscn" id="3_njcut"]
+[ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe_graphic/pipe_graphic.tscn" id="4_ooik3"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_chv4m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 4.0
+offset_right = 510.0
+offset_bottom = 369.0
+color = Color(0.90574, 0.503502, 0.661059, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_vws7v")
+offset = Vector2(500, 365)
+
+[node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_njcut")]
+position = Vector2(243, 40)
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe1")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_ooik3")]
+position = Vector2(14, -20)
+
+[node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_njcut")]
+position = Vector2(243, 79)
+open = false
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe2")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_ooik3")]
+position = Vector2(14, -20)
+
+[node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_njcut")]
+position = Vector2(243, 79)
+open = false
+magnitude = 1
+connections = Array[NodePath]([NodePath("")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_ooik3")]
+position = Vector2(14, -20)
