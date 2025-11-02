@@ -10,14 +10,23 @@
 script = ExtResource("1_ugwac")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 506.0
 offset_bottom = 369.0
 color = Color(0.90574, 0.503502, 0.661059, 1)
 
 [node name="Background" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_7tw2n")
 offset = Vector2(500, 365)
+
+[node name="LogicalPipe5" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
+position = Vector2(310, 18)
+water = 100
+magnitude = 4
+connections = Array[NodePath]([NodePath("../LogicalPipe4")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe5" instance=ExtResource("4_tsljc")]
+position = Vector2(15, -9)
 
 [node name="LogicalPipe4" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(239, 62)
@@ -27,7 +36,7 @@ connections = Array[NodePath]([NodePath("../LogicalPipe0")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe4" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
-animation_frame = 1
+animation_frame = 2
 
 [node name="PipeGraphic-1" parent="LogicalPipe4" instance=ExtResource("4_tsljc")]
 position = Vector2(50, -20)
@@ -35,23 +44,25 @@ animation_frame = 1
 
 [node name="PipeGraphic-2" parent="LogicalPipe4" instance=ExtResource("4_tsljc")]
 position = Vector2(86, -20)
-animation_frame = 1
+animation_frame = 5
 
 [node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(239, 101)
 magnitude = 1
-connections = Array[NodePath]([NodePath(".")])
-
-[node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_tsljc")]
-position = Vector2(14, -20)
+sensors = Array[int]([7])
+connections = Array[NodePath]([NodePath("../LogicalPipe1")])
 
 [node name="PipeGraphic-1" parent="LogicalPipe0" instance=ExtResource("4_tsljc")]
 position = Vector2(14, -20)
 animation_frame = 15
 
+[node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_tsljc")]
+position = Vector2(14, -20)
+
 [node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(239, 140)
 magnitude = 1
+sensors = Array[int]([2])
 connections = Array[NodePath]([NodePath("../LogicalPipe2")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_tsljc")]
@@ -64,6 +75,7 @@ animation_frame = 11
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_dussk")]
 position = Vector2(239, 180)
 magnitude = 1
+sensors = Array[int]([7])
 connections = Array[NodePath]([NodePath("../LogicalPipe3")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_tsljc")]

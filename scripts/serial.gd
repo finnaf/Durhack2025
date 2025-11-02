@@ -55,34 +55,46 @@ func _update_sensors(_analogue_values: Array, _digital_values: Array):
 	
 	for i in range(len(_digital_values)):
 		digital_values[i] = _digital_values[i]
+	
+	print(str(analogue_values) + " " + str(digital_values))
 
 var _sensor_to_pin = {
 	Globals.SensorType.POTENTIOMETER: [analogue_values, 0],
-	Globals.SensorType.WET_SENSOR: [analogue_values, 1],
+	Globals.SensorType.WET_SENSOR: [analogue_values, 5],
 	Globals.SensorType.JOYSTICK_X: [analogue_values, 2],
 	Globals.SensorType.JOYSTICK_Y: [analogue_values, 3],
 	Globals.SensorType.JOYSTICK_Z: [digital_values, 3],
-	Globals.SensorType.HALL_EFFECT_SENSOR: [digital_values, 1],
-	Globals.SensorType.TOUCH_SENSOR: [digital_values, 2],
-	Globals.SensorType.BUTTON: [digital_values, 0],
+	Globals.SensorType.HALL_EFFECT_SENSOR: [digital_values, 2],
+	Globals.SensorType.TOUCH_SENSOR: [digital_values, 0],
+	Globals.SensorType.BUTTON: [digital_values, 1],
 	Globals.SensorType.STEAM_SENSOR: [analogue_values, 4],
-	Globals.SensorType.RAGE_SENSOR: [analogue_values, 5]
+	Globals.SensorType.RAGE_SENSOR: [analogue_values, 1]
 }
+
+var rage_countdown = 0
 
 func isTriggered(sensor: Globals.SensorType):
 	var pin = _sensor_to_pin[sensor][1]
-	
+		
 	match sensor:
 		Globals.SensorType.POTENTIOMETER: return analogue_values[pin] > 230
 		Globals.SensorType.WET_SENSOR: return analogue_values[pin] > 400
-		Globals.SensorType.JOYSTICK_X: return analogue_values[pin] > 1000
-		Globals.SensorType.JOYSTICK_Y: return analogue_values[pin] > 1000
+		Globals.SensorType.JOYSTICK_X: return abs(analogue_values[pin] - 520) > 100
+		Globals.SensorType.JOYSTICK_Y: return abs(analogue_values[pin] - 520) > 100
 		Globals.SensorType.JOYSTICK_Z: return digital_values[pin] == 1
 		Globals.SensorType.HALL_EFFECT_SENSOR: return digital_values[pin] == 1
 		Globals.SensorType.TOUCH_SENSOR: return digital_values[pin] == 1
 		Globals.SensorType.BUTTON: return digital_values[pin] == 1
 		Globals.SensorType.STEAM_SENSOR: return analogue_values[pin] > 100
-		Globals.SensorType.RAGE_SENSOR: return analogue_values[pin] > 30
+		Globals.SensorType.RAGE_SENSOR: 
+			if rage_countdown > 0:
+				return true
+			
+			if analogue_values[pin] > 10:
+				rage_countdown = 2000
+				return true
+			else:
+				return false
 	
 	return false
    
