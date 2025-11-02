@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var open := true
-@export var water: int = 1
+@export var water: int = 0
 @export var magnitude: int = 3
 @export var is_vertical := true
 
@@ -45,14 +45,14 @@ func _draw():
 	if is_vertical:
 		water_container_size.y = water
 		draw_rect(
-			Rect2(Vector2(0, -water_container_size.y), water_container_size), 
+			Rect2(Vector2(1, -water_container_size.y), water_container_size), 
 			color
 		)
 	else:
 		water_container_size.y = water / magnitude
 		water_container_size.x = water
 		draw_rect(
-			Rect2(Vector2(0, -water_container_size.y), water_container_size), 
+			Rect2(Vector2(1, -water_container_size.y), water_container_size), 
 			color
 		)
 

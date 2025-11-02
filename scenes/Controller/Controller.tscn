@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccg0dbpxggtei"]
+
+[ext_resource type="Script" uid="uid://cyf86v500g5ff" path="res://scripts/controller.gd" id="1_iqmet"]
+[ext_resource type="Script" uid="uid://xwptotoh027i" path="res://scripts/serial.gd" id="2_vfwfi"]
+
+[node name="Controller" type="Node2D"]
+script = ExtResource("1_iqmet")
+
+[node name="SerialController" type="Node2D" parent="."]
+script = ExtResource("2_vfwfi")
