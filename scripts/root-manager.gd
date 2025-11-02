@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		manager.tick()
 		tick_acc = 0.0
 
-func _setup_water(start_sum: float):
+func _setup_water(start_sum: int):
 	manager = PipeStateManager.new()
 
 	for node in get_tree().get_nodes_in_group("LogicalPipes"):

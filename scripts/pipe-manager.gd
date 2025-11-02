@@ -15,7 +15,7 @@ func tick() -> void:
 		transfers[pipe] = []
 
 	for pipe in pipes:
-		if not pipe.open or pipe.water <= 0.0 or pipe.is_leaf():
+		if not pipe.open or pipe.water <= 0 or pipe.is_leaf():
 			continue
 
 		# Find all connected pipes that can receive water
@@ -24,12 +24,12 @@ func tick() -> void:
 			if child.water < child.capacity:
 				available_children.append(child)
 
-		var total_outflow: float = 0.0
-		var amount_per_child: float = 0.0
+		var total_outflow: int = 0
+		var amount_per_child: int = 0
 
 		if available_children.size() > 0:
-			total_outflow = min(pipe.water, float(available_children.size()))
-			amount_per_child = total_outflow / float(available_children.size())
+			total_outflow = min(pipe.water, available_children.size())
+			amount_per_child = total_outflow / available_children.size()
 
 		# Record how much to send to each connection
 		for child in available_children:

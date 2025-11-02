@@ -1,8 +1,11 @@
 extends Node2D
 
 @export var open := true
-@export var water := 0.0
-@export var capacity := 300.0
+@export var water: int = 1
+@export var magnitude: int = 3
+@export var is_vertical := true
+
+var capacity: int
 
 @export var connections: Array[NodePath] = []
 var on_full: Callable
@@ -17,13 +20,13 @@ func open_valve():
 func close_valve():
 	open = false
 
-func add_water(amount: float):
+func add_water(amount: int):
 	queue_redraw()
 	water += amount
-func sub_water(amount: float):
+func sub_water(amount: int):
 	add_water(-amount)
 
-func set_capacity(amount: float):
+func set_capacity(amount: int):
 	capacity = amount
 
 func is_leaf():
@@ -33,6 +36,11 @@ func is_leaf():
 
 func _ready():
 	_resolve_connections()
+	
+	if is_vertical:
+		capacity = Globals.PIPESIZE.y * magnitude
+	else:
+		capacity = Globals.PIPESIZE.x * magnitude
 
 func _draw():
 	water_container_size.y = water
@@ -41,9 +49,9 @@ func _draw():
 		color
 	)
 
-func receive(amount: float) -> float:
+func receive(amount: int) -> int:
 	if water >= capacity:
-		return 0.0
+		return 0
 	
 	var accepted = min(amount, capacity - water)
 	add_water(accepted)

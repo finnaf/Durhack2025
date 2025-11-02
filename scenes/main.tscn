@@ -87,7 +87,6 @@ animation_frame = 2
 
 [node name="LogicalPipe4" parent="." groups=["LogicalPipes"] instance=ExtResource("3_jyhfs")]
 position = Vector2(340, 312)
-open = false
 connections = Array[NodePath]([NodePath("../LogicalPipe6")])
 
 [node name="PipeGraphic-0" parent="LogicalPipe4" instance=ExtResource("2_sugp2")]
