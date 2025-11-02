@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://oqye3fscg1rb"]
+
+[ext_resource type="Script" uid="uid://dvqtxghytsg46" path="res://scripts/root-manager.gd" id="1_b7fmw"]
+[ext_resource type="Texture2D" uid="uid://bw5fpmydpb8ji" path="res://images/PipeBackground.jpg" id="2_dtctc"]
+[ext_resource type="PackedScene" uid="uid://cfb5765les330" path="res://scenes/logical_pipe.tscn" id="3_ocsqr"]
+[ext_resource type="PackedScene" uid="uid://2r8vt2vkhgkb" path="res://scenes/pipe.tscn" id="4_42j6g"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_b7fmw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 506.0
+offset_bottom = 369.0
+color = Color(0.90574, 0.503502, 0.661059, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_dtctc")
+offset = Vector2(500, 365)
+
+[node name="LogicalPipe0" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
+position = Vector2(243, 40)
+magnitude = 1
+connections = Array[NodePath]([NodePath("../LogicalPipe1")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe0" instance=ExtResource("4_42j6g")]
+position = Vector2(14, -20)
+frame_choice = 2
+
+[node name="LogicalPipe1" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
+position = Vector2(243, 196)
+open = false
+water = 0
+magnitude = 4
+connections = Array[NodePath]([NodePath("../LogicalPipe2")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
+position = Vector2(14, -99)
+frame_choice = 2
+
+[node name="PipeGraphic-1" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
+position = Vector2(14, -59)
+frame_choice = 2
+
+[node name="PipeGraphic-2" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
+position = Vector2(14, -19)
+frame_choice = 10
+animation_frame = 10
+
+[node name="PipeGraphic-3" parent="LogicalPipe1" instance=ExtResource("4_42j6g")]
+position = Vector2(14, -139)
+frame_choice = 2
+
+[node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_ocsqr")]
+position = Vector2(243, 237)
+water = 0
+magnitude = 1
+connections = Array[NodePath]([NodePath(""), NodePath(""), NodePath("")])
+
+[node name="PipeGraphic-0" parent="LogicalPipe2" instance=ExtResource("4_42j6g")]
+position = Vector2(14, -20)
+frame_choice = 2

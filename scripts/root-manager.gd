@@ -12,7 +12,7 @@ func _ready():
 	_assign_pipes()
 	_serial_start()
 	
-	_setup_water(300)
+	_setup_water(100)
 
 
 func _physics_process(delta: float) -> void:
