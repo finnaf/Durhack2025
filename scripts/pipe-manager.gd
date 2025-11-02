@@ -6,7 +6,7 @@ var pipes: Array[Node2D] = []
 func add_pipe(pipe: Node2D) -> void:
 	pipes.append(pipe)
 
-func tick() -> void:
+func tick() -> void:	
 	# Run one simultaneous simulation step.
 	# Phase 1: Calculate all planned transfers
 	var transfers: Dictionary = {}
@@ -35,7 +35,7 @@ func tick() -> void:
 			transfers[child].append(amount_per_child)
 
 		# Deduct from parent immediately (so we don't double count)
-		pipe.water -= total_outflow
+		pipe.sub_water(total_outflow) 
 
 	# Phase 2: Apply all inflows simultaneously
 	for pipe in transfers.keys():
