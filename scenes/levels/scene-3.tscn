@@ -39,6 +39,14 @@ position = Vector2(14, -20)
 [node name="PipeGraphic-1" parent="LogicalPipe1" instance=ExtResource("4_ooik3")]
 position = Vector2(14, -60)
 
+[node name="PipeGraphic-2" parent="LogicalPipe1" instance=ExtResource("4_ooik3")]
+position = Vector2(54, -20)
+animation_frame = 19
+
+[node name="PipeGraphic-3" parent="LogicalPipe1" instance=ExtResource("4_ooik3")]
+position = Vector2(-26, -20)
+animation_frame = 13
+
 [node name="LogicalPipe2" parent="." groups=["LogicalPipes"] instance=ExtResource("3_njcut")]
 position = Vector2(243, 160)
 open = false
