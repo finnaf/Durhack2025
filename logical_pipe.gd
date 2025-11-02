@@ -37,17 +37,24 @@ func is_leaf():
 func _ready():
 	_resolve_connections()
 	
-	if is_vertical:
-		capacity = Globals.PIPESIZE.y * magnitude
-	else:
-		capacity = Globals.PIPESIZE.x * magnitude
+	capacity = Globals.PIPESIZE.x * magnitude
 
 func _draw():
-	water_container_size.y = water
-	draw_rect(
-		Rect2(Vector2(0, -water_container_size.y), water_container_size), 
-		color
-	)
+	
+	
+	if is_vertical:
+		water_container_size.y = water
+		draw_rect(
+			Rect2(Vector2(0, -water_container_size.y), water_container_size), 
+			color
+		)
+	else:
+		water_container_size.y = water / magnitude
+		water_container_size.x = water
+		draw_rect(
+			Rect2(Vector2(0, -water_container_size.y), water_container_size), 
+			color
+		)
 
 func receive(amount: int) -> int:
 	if water >= capacity:
