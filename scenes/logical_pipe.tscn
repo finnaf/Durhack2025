@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfb5765les330"]
+[gd_scene load_steps=3 format=3 uid="uid://cfb5765les330"]
 
 [ext_resource type="Script" uid="uid://7fu2655x425d" path="res://logical_pipe.gd" id="1_nmga0"]
+[ext_resource type="Script" uid="uid://df0t7l5iociid" path="res://scripts/water-box.gd" id="2_o1uul"]
 
 [node name="LogicalPipe" type="Node2D"]
 script = ExtResource("1_nmga0")
+
+[node name="WateringCan" type="Node2D" parent="."]
+script = ExtResource("2_o1uul")

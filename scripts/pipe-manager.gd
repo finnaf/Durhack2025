@@ -43,7 +43,7 @@ func tick() -> void:
 			pipe.receive(amt)
 
 
-func run(steps: int = 5, verbose: bool = true) -> void:
+func run(steps: int = 5, verbose: bool = false) -> void:
 	for t in range(steps):
 		if verbose:
 			print("\n--- Step %d ---" % [t + 1])

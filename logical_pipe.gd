@@ -4,13 +4,19 @@ extends Node2D
 @export var water := 0.0
 @export var capacity := 10.0
 
-@export var connections: Array[NodePath] = [] # of node2ds
+@export var connections: Array[NodePath] = []
 var on_full: Callable
 
 var connected_pipes: Array[Node2D] = []
 
+var color = Color(0, 0, 1)
+var size = Vector2(26, 10)
+
 func _ready():
 	_resolve_connections()
+
+func _draw():
+	draw_rect(Rect2(Vector2(0, 5), size), color)
 
 func receive(amount: float) -> float:
 	if water >= capacity:
