@@ -1,5 +1,7 @@
 extends Node2D
 
+var tick_acc := 0.0
+
 var serial: GdSerial
 var reader_thread: Thread
 var stop_thread := false
@@ -10,27 +12,24 @@ func _ready():
 	_assign_pipes()
 	_serial_start()
 	
-	_run_water()
+	_setup_water(300)
 
 
-func _run_water():
+func _physics_process(delta: float) -> void:
+	tick_acc += delta
+	if tick_acc >= Globals.TICKSPEED:
+		manager.tick()
+		tick_acc = 0.0
+
+func _setup_water(start_sum: int):
 	manager = PipeStateManager.new()
 
-	# Step 1: Create Pipe objects for all LogicalPipes
 	for node in get_tree().get_nodes_in_group("LogicalPipes"):
 		manager.add_pipe(node)
-
-	# Step 3: Optionally set on_full callback
-	for node in get_tree().get_nodes_in_group("LogicalPipes"):
 		node.on_full = func(): print("pipe is full!")
 
-	# Step 4: Initialize some starting water
 	var first_pipe = manager.pipes[0]
-	first_pipe.water = 10.0  # give some water to start flow
-
-	# Step 5: Run the simulation
-	manager.run(11, true)
-
+	first_pipe.add_water(start_sum)
 
 func _assign_pipes():
 	for pipe_group in get_tree().get_nodes_in_group("pipe_group"):
